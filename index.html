@@ -1,0 +1,32 @@
+# 這是為了幫你重新封裝程式碼的 Python 腳本，確認檔案內容完整性
+import os
+
+# 讀取使用者原本的檔案內容
+with open('music19.html', 'r', encoding='utf-8') as f:
+    content = f.read()
+
+# 準備標準的 HTML 車殼
+html_template = f"""<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VANCODEmusic - 黑膠唱片專賣店</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-50">
+    <div id="root"></div>
+    <script type="text/babel">
+        {content}
+    </script>
+</body>
+</html>"""
+
+# 寫入成新的 index.html
+with open('index.html', 'w', encoding='utf-8') as f:
+    f.write(html_template)
